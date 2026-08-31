@@ -1,0 +1,12 @@
+# Normalize line endings to LF in the repo; let git handle CRLF on Windows checkout
+* text=auto eol=lf
+
+# Force binary files to never be normalized
+*.png binary
+*.jpg binary
+*.svg binary
+*.ico binary
+*.faiss binary
+*.index binary
+*.pt binary
+*.bin binary

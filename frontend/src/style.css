@@ -1,0 +1,239 @@
+/* =====================================================
+   GraphRAG Legal — Global Styles
+   ===================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg-deep:      #0b0f1a;
+  --bg-card:      rgba(255, 255, 255, 0.04);
+  --border:       rgba(255, 255, 255, 0.08);
+  --accent:       #6c63ff;
+  --accent-glow:  rgba(108, 99, 255, 0.35);
+  --accent-alt:   #00d4aa;
+  --text-primary: #f0f2ff;
+  --text-muted:   #8b92b4;
+  --ok-green:     #22c55e;
+  --err-red:      #f87171;
+  --radius:       14px;
+  --transition:   0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(108, 99, 255, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 80% 80%,  rgba(0, 212, 170, 0.08) 0%, transparent 60%);
+}
+
+/* --- Layout ---------------------------------------- */
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 2.5rem;
+}
+
+/* --- Header ---------------------------------------- */
+.header {
+  text-align: center;
+}
+
+.header__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-alt);
+  margin-bottom: 0.75rem;
+}
+
+.header__title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  background: linear-gradient(135deg, #ffffff 30%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header__subtitle {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* --- Card ------------------------------------------ */
+.card {
+  width: 100%;
+  max-width: 560px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 40px var(--accent-glow);
+  transition: box-shadow var(--transition);
+}
+
+.card:hover {
+  box-shadow: 0 0 60px var(--accent-glow);
+}
+
+.card__label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+}
+
+/* --- Status badge ---------------------------------- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+
+.status-badge--ok {
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--ok-green);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+}
+
+.status-badge--error {
+  background: rgba(248, 113, 113, 0.12);
+  color: var(--err-red);
+  border: 1px solid rgba(248, 113, 113, 0.25);
+}
+
+.status-badge--loading {
+  background: rgba(108, 99, 255, 0.12);
+  color: var(--accent);
+  border: 1px solid rgba(108, 99, 255, 0.25);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* --- Key-value rows -------------------------------- */
+.kv-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.kv-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.85rem;
+  padding: 0.55rem 0.75rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  transition: background var(--transition);
+}
+
+.kv-row:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.kv-key {
+  color: var(--text-muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.kv-val {
+  color: var(--text-primary);
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  text-align: right;
+  word-break: break-all;
+}
+
+/* --- Refresh button -------------------------------- */
+.btn-refresh {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), #8b83ff);
+  color: #fff;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.btn-refresh:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-refresh:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-refresh:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- Error state ----------------------------------- */
+.error-msg {
+  font-size: 0.82rem;
+  color: var(--err-red);
+  margin-top: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.2);
+  border-radius: 8px;
+}
+
+/* --- Animations ------------------------------------ */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.45; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease both;
+}

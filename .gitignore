@@ -1,0 +1,86 @@
+# ── Environment ──────────────────────────────────────────────
+.env
+*.env.local
+
+# ── Python ────────────────────────────────────────────────────
+backend/venv/
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+*.so
+
+# ── Jupyter ───────────────────────────────────────────────────
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+
+# ── Node / Frontend ───────────────────────────────────────────
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# ── Large Data Files (CUAD dataset — download separately) ─────
+data/CUAD_v1.json
+data/master_clauses.csv
+data/CUAD_v1_README.txt
+data/full_contract_pdf/
+data/full_contract_txt/
+data/label_group_xlsx/
+CUAD_v1/
+
+# ── Processed Pipeline Outputs (regenerate via run_pipeline.py)
+data/processed/cuad_full.jsonl
+data/processed/train.jsonl
+data/processed/val.jsonl
+data/processed/test.jsonl
+data/processed/faiss.index
+data/processed/faiss_mapping.json
+data/processed/split_manifest.json
+# risk_mapping.json is hand-authored — keep it
+!data/processed/risk_mapping.json
+
+# ── Model Weights (regenerate via train_bilstm.py) ────────────
+models/
+*.pt
+*.bin
+*.onnx
+*.pkl
+*.h5
+
+# ── Neo4j Docker Volume ───────────────────────────────────────
+neo4j_data/
+neo4j/data/
+neo4j/logs/
+neo4j/import/
+neo4j/plugins/
+
+# ── Scratch / One-off Investigation Scripts ───────────────────
+ask_graphrag.py
+check_unknowns.py
+clause_dump.md
+dump_clauses.py
+dump_clauses_md.py
+investigate.py
+sample_entities.py
+verify_api.py
+verify_entities.py
+verify_graph.py
+verify_retrieval.py
+
+# ── OS ────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE ───────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo

@@ -1,0 +1,28 @@
+services:
+  neo4j:
+    image: neo4j:5.24
+    ports:
+      - "7474:7474"   # Neo4j Browser (web UI)
+      - "7687:7687"   # Bolt protocol (what your Python driver connects to)
+    environment:
+      - NEO4J_AUTH=neo4j/graphrag2026
+      - NEO4J_PLUGINS=["apoc"]
+    volumes:
+      - neo4j_data:/data
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - neo4j
+    command: uvicorn backend.main:app --host 0.0.0.0 --port 8000
+
+volumes:
+  neo4j_data:
